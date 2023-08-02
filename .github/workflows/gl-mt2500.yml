@@ -1,5 +1,5 @@
 name: build_uboot_for_GL-MT2500
-on: 
+# on: 
 #  workflow_dispatch:
 #    inputs:
 #      fixed_mtdparts:
