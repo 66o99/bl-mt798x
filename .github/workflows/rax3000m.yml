@@ -37,11 +37,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
             name: wr30u_uboot_fixed-parts
-            path: bl-mt798x/output/cmcc_rax3000m-fip-fixed-parts.bin
-      
+            path: bl-mt798x/output/mt7981_cmcc_rax3000m-fip-fixed-parts.bin
+
       - name: Upload FIP file
         if: ${{ inputs.fixed_mtdparts == false }}
         uses: actions/upload-artifact@v3
         with: 
             name: wr30u_uboot_fixed-parts
-            path: bl-mt798x/output/cmcc_rax3000m-fip.bin
+            path: bl-mt798x/output/mt7981_cmcc_rax3000m-fip.bin
