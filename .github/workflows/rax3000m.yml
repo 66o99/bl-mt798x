@@ -1,4 +1,4 @@
-name: build_uboot_for_wr30u
+name: build_uboot_for_Rax3000M
 on: 
   workflow_dispatch:
     inputs:
@@ -12,36 +12,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build for Xiaomi WR30U with fixed mtdparts
+      - name: Build for Rax3000M with fixed mtdparts
         if: ${{ inputs.fixed_mtdparts == true }}
         run: |
           sudo apt update
           sudo apt install build-essential bison flex bc libssl-dev python-is-python3 device-tree-compiler gcc-aarch64-linux-gnu
           export CROSS_COMPILE=aarch64-linux-gnu-
-          git clone https://github.com/CZB666-wdnmd/bl-mt798x
+          git clone https://github.com/66o99/bl-mt798x
           cd bl-mt798x
-          SOC=mt7981 BOARD=xiaomi_wr30u ./build.sh
+          SOC=mt7981 BOARD=cmcc_rax3000m ./build.sh
           
-      - name: Build for Xiaomi WR30U
+      - name: Build for Rax3000M
         if: ${{ inputs.fixed_mtdparts == false }}
         run: |
           sudo apt update
           sudo apt install build-essential bison flex bc libssl-dev python-is-python3 device-tree-compiler gcc-aarch64-linux-gnu
           export CROSS_COMPILE=aarch64-linux-gnu-
-          git clone https://github.com/CZB666-wdnmd/bl-mt798x
+          git clone https://github.com/66o99/bl-mt798x
           cd bl-mt798x
-          SOC=mt7981 BOARD=xiaomi_wr30u FIXED_MTDPARTS=0 ./build.sh
+          SOC=mt7981 BOARD=cmcc_rax3000m FIXED_MTDPARTS=0 ./build.sh
           
       - name: Upload FIP file with fixed mtdparts
         if: ${{ inputs.fixed_mtdparts == true }}
         uses: actions/upload-artifact@v3
         with: 
             name: wr30u_uboot_fixed-parts
-            path: bl-mt798x/output/mt7981_xiaomi_wr30u-fip-fixed-parts.bin
+            path: bl-mt798x/output/cmcc_rax3000m-fip-fixed-parts.bin
       
       - name: Upload FIP file
         if: ${{ inputs.fixed_mtdparts == false }}
         uses: actions/upload-artifact@v3
         with: 
             name: wr30u_uboot_fixed-parts
-            path: bl-mt798x/output/mt7981_xiaomi_wr30u-fip.bin
+            path: bl-mt798x/output/cmcc_rax3000m-fip.bin
