@@ -25,5 +25,5 @@ jobs:
 
       - name: Upload FIP file
         with: 
-            name: GL-MT2500_uboot_fixed-parts
+            name: GL-MT2500_uboot_fip
             path: bl-mt798x/atf-20220606-637ba581b/build/mt7981/release/fip.bin
