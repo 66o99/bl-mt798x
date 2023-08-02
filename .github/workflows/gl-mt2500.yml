@@ -1,12 +1,13 @@
 name: build_uboot_for_GL-MT2500
-# on: 
-#  workflow_dispatch:
-#    inputs:
-#      fixed_mtdparts:
-#        description: 'Fixed mtd parts? (will not follow uboot env)'
-#        required: true
-#        type: boolean
-#        default: 'true'
+on: 
+  workflow_dispatch:
+    inputs:
+      fixed_mtdparts:
+        description: 'Fixed mtd parts? (will not follow uboot env)'
+        required: true
+        type: boolean
+        default: 'true'
+        
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +24,6 @@ jobs:
           SOC=gl BOARD=mt2500 ./build.sh               
 
       - name: Upload FIP file
-        if: ${{ inputs.fixed_mtdparts == false }}
         uses: actions/upload-artifact@v3
         with: 
             name: GL-MT2500_uboot_fixed-parts
