@@ -26,12 +26,12 @@
 
 		reset-button {
 			label = "reset";
-			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
 		};
 
 		mesh-button {
 			label = "mesh";
-			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -40,17 +40,17 @@
 
 		led@0 {
 			label = "red:system";
-			gpios = <&gpio 53 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 35 GPIO_ACTIVE_LOW>;
 		};
 
 		led@1 {
 			label = "green:system";
-			gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 9 GPIO_ACTIVE_LOW>;
 		};
 
 		led@2 {
 			label = "blue:system";
-			gpios = <&gpio 21 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
